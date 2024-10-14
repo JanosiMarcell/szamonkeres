@@ -27,9 +27,10 @@ namespace idk.Controllers
             {
                 var result = new Targy
                 {
-                    Id = reader.GetGuid(0),
-                    targy = reader.GetString(1),
-                    ar = reader.GetInt32(2),
+                    Azon = reader.GetGuid(0),
+                    Jegy = reader.GetInt32(1),
+                    Leiras = reader.GetString(2),
+                    Letrehozas=reader.GetDateTime(3),   
                 };
 
                 targyak.Add(result);
@@ -45,11 +46,12 @@ namespace idk.Controllers
         {
             var result = new Targy
             {
-                Id = Guid.NewGuid(),
-                targy = targyak.targy,
-                ar = targyak.ar,
+                Azon = Guid.NewGuid(),
+                Jegy = targyak.Jegy,
+                Leiras = targyak.Leiras,
+                Letrehozas=targyak.Letrehozas,
             };
-            string sql = $"INSERT INTO `meanstokys`(`id`, `targy`, `ar`) VALUES ('{result.Id}','{result.targy}','{result.ar}'";
+            string sql = $"INSERT INTO `meanstokys`(`Azon`, `Jegy`, `Leiras`, `Letrehozas`) VALUES ('{result.Azon}','{result.Jegy}','{result.Leiras}','{result.Letrehozas}')";
             conn.Connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
             conn.Connection.Close();
@@ -61,33 +63,16 @@ namespace idk.Controllers
         {
             var result = new Targy
             {
-                Id = Guid.NewGuid(),
-                targy = targyak.targy,
-                ar = targyak.ar,
+                Azon = Guid.NewGuid(),
+                Jegy = targyak.Jegy,
+                Leiras = targyak.Leiras,
+                Letrehozas = targyak.Letrehozas,
             };
-            string sql = $"UPDATE `meanstokys` SET `id`='{result.Id}',`targy`='{result.targy}',`ar`='{result.ar}'";
-            conn.Connection.Open();
+            string sql = $"UPDATE `meanstokys` SET `Azon`='{result.Azon}',`Jegy`='{result.Jegy}',`Leiras`='{result.Leiras}',`Letrehozas`='{result.Letrehozas}'";
             MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
             conn.Connection.Close();
             return StatusCode(281, result);
         }
-        [HttpDelete]
-        public ActionResult<Targy> Delete(CreateTargyDto targyak)
-        {
-            var result = new Targy
-            {
-                Id = Guid.NewGuid(),
-                targy = targyak.targy,
-                ar = targyak.ar,
-            };
-            string sql = $"UPDATE `meanstokys` SET `id`='{result.Id}',`targy`='{result.targy}',`ar`='{result.ar}'";
-            conn.Connection.Open();
-            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
-            conn.Connection.Close();
-            return StatusCode(281, result);
-        }
-
-
 
     }
 }

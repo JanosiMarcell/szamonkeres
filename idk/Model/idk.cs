@@ -2,8 +2,9 @@
 {
     public class Targy
     {
-        public Guid Id { get; set; }
-        public string targy { get; set; }
-        public int ar { get; set; }
+        public Guid Azon { get; set; }
+        public int Jegy { get; set; }
+        public string Leiras { get; set; }
+        public DateTime Letrehozas { get;  set; }
     }
 }

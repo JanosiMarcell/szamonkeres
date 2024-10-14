@@ -2,10 +2,10 @@
 {
     public class Dto
     {
-        public record CreateTargy(Guid Id, string targy, int ar);
-        public record CreateTargyDto(string targy, int ar);
+        public record CreateTargy(Guid Azon, int Jegy, string Leiras, DateTime Letrehozas);
+        public record CreateTargyDto(int Jegy, string Leiras, DateTime Letrehozas);
 
-        public record UpdateTargyDto(Guid Id, string targy, int ar);
+        public record UpdateTargyDto(Guid Azon, int Jegy, string Leiras, DateTime Letrehozas);
 
 
     }
