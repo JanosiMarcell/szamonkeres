@@ -16,7 +16,7 @@ namespace idk.Model
         public Connect()
         {
             Host = "localhost";
-            Database = "shop";
+            Database = "idk";
             User = "root";
             Password = "";
             ConnectionString = "SERVER=" + Host + ";DATABASE=" + Database + ";UID=" + User + ";PASSWORD=" + Password + ";SslMode=None";
