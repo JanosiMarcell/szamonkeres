@@ -57,7 +57,22 @@ namespace idk.Controllers
         }
 
         [HttpPut]
-        public ActionResult<Targy> Put(CreateTargyDto targyak)
+        public ActionResult<Targy> Put(UpdateTargyDto targyak)
+        {
+            var result = new Targy
+            {
+                Id = Guid.NewGuid(),
+                targy = targyak.targy,
+                ar = targyak.ar,
+            };
+            string sql = $"UPDATE `meanstokys` SET `id`='{result.Id}',`targy`='{result.targy}',`ar`='{result.ar}'";
+            conn.Connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+            conn.Connection.Close();
+            return StatusCode(281, result);
+        }
+        [HttpDelete]
+        public ActionResult<Targy> Delete(CreateTargyDto targyak)
         {
             var result = new Targy
             {
