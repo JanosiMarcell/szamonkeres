@@ -1,0 +1,6 @@
+@idk_HostAddress = http://localhost:5213
+
+GET {{idk_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
